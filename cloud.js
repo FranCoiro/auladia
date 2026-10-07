@@ -85,7 +85,7 @@
     authBusy=true;error='';
     e.target.querySelector('button').disabled=true;
     try {
-      const result=authMode==='signup'?await client.auth.signUp({email,password}):await client.auth.signInWithPassword({email,password});
+      const result=authMode==='signup'?await client.auth.signUp({email,password,options:{emailRedirectTo:'https://francoiro.github.io/auladia/'}}):await client.auth.signInWithPassword({email,password});
       if(result.error)throw result.error;
       if(result.data.session){user=result.data.session.user;await loadCloud();}
       else{authMode='login';error='Revisa tu correo para confirmar tu cuenta y luego inicia sesión.';}
